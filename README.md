@@ -8,7 +8,7 @@ This project delves into the evolution of speech recognition and the underpinnin
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
+
 
 ## Installation
 
