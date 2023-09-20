@@ -12,7 +12,7 @@ def get_list():
     x_train = []
     y_train = []
 
-    # train1.txt 是自己录音的500条数据 quanbu.txt是老师提供的3000条录音加自己的500条录音进行训练
+    # train1.txt contains 500 recordings made by oneself, while quanbu.txt contains 3000 recordings provided by the teacher plus the 500 recordings made by oneself for training.
     text = open('train_new.txt', 'r', encoding='utf-8').read().split('\n')
     for i in text:
         wenjian, leibie = i.split('	')
@@ -28,7 +28,7 @@ def get_list():
     x_test = []
     y_test = []
 
-    # train1.txt 是自己录音的500条数据 quanbu.txt是老师提供的3000条录音加自己的500条录音进行训练
+    # train1.txt contains 500 recordings made by oneself, while quanbu.txt contains 3000 recordings provided by the teacher plus the 500 recordings made by oneself for training.
     text2 = open('test_new.txt', 'r', encoding='utf-8').read().split('\n')
     for i in text2:
         wenjian, leibie = i.split('	')
@@ -44,14 +44,15 @@ def get_list():
     return x_train,y_train,x_test,y_test
 
 def train_model(x_train, y_train, x_ver, y_ver):
-    '''
-
-    :param x_train: x训练集
-    :param y_train: y训练集
-    :param x_ver: x验证集
-    :param y_ver: y验证集
-    :return:
-    '''
+    """
+    Trains a CNN model using the provided training data and validates it using the validation data.
+    
+    Parameters:
+        x_train (np.array): Training data for features.
+        y_train (np.array): Training data for labels.
+        x_ver (np.array): Validation data for features.
+        y_ver (np.array): Validation data for labels.
+    """
     model = Sequential()
     model.add(Conv2D(filters=16, kernel_size=(3, 3), padding='same', input_shape=(20, 50, 1), activation='relu'))
     model.add(Conv2D(filters=32, kernel_size=(3, 3), padding='same', activation='relu'))
@@ -75,8 +76,8 @@ def train_model(x_train, y_train, x_ver, y_ver):
 
     history = model.fit(x_train, y_train,
 
-                        batch_size=16,  # 每批次放入模型中训练的数据
-                        epochs=200,  # 训练的轮数
+                        batch_size=16,  
+                        epochs=200,  
                         validation_data=(x_ver, y_ver),
                         shuffle=True,
                         callbacks=[model_checkpoint])

@@ -8,14 +8,22 @@ import numpy as np
 from keras.utils import np_utils
 import matplotlib.pyplot as plt
 from keras.callbacks import ModelCheckpoint
-# https://zhuanlan.zhihu.com/p/28204293
 
 
 def read_list():
+    """
+    Reads training and testing data from specified files.
+    
+    Returns:
+        x_train (np.array): Training data for features.
+        y_train (np.array): Training data for labels.
+        x_test (np.array): Testing data for features.
+        y_test (np.array): Testing data for labels.
+    """
     x_train = []
     y_train = []
 
-    # train1.txt 是自己录音的500条数据 quanbu.txt是老师提供的3000条录音加自己的500条录音进行训练
+    # train1.txt contains 500 recordings made by oneself, while quanbu.txt contains 3000 recordings provided by the teacher plus the 500 recordings made by oneself for training.
     text = open('new_recordings_train.txt', 'r', encoding='utf-8').read().split('\n')
     for i in text:
         wenjian, leibie = i.split('	')
@@ -31,7 +39,7 @@ def read_list():
     x_test = []
     y_test = []
 
-    # train1.txt 是自己录音的500条数据 quanbu.txt是老师提供的3000条录音加自己的500条录音进行训练
+    # train1.txt contains 500 recordings made by oneself, while quanbu.txt contains 3000 recordings provided by the teacher plus the 500 recordings made by oneself for training.
     text2 = open('new_recordings_test.txt', 'r', encoding='utf-8').read().split('\n')
     for i in text2:
         wenjian, leibie = i.split('	')
@@ -47,15 +55,18 @@ def read_list():
     return x_train,y_train,x_test,y_test
 
 def train_model(x_train, y_train, x_ver, y_ver):
-    '''
+    """
+    Trains a CNN model using the provided training data and validates it using the validation data.
+    
+    Parameters:
+        x_train (np.array): Training data for features.
+        y_train (np.array): Training data for labels.
+        x_ver (np.array): Validation data for features.
+        y_ver (np.array): Validation data for labels.
+    """
 
-    :param x_train: x训练集
-    :param y_train: y训练集
-    :param x_ver: x验证集
-    :param y_ver: y验证集
-    :return:
-    '''
-    model = Sequential()  # keras使用的 序列化的方式 来创建模型  （另一种是函数式）
+
+    model = Sequential()  # Keras uses a sequential approach to create models (another approach is functional).
     model.add(Conv1D(filters=16, kernel_size=4, strides=2, padding='same', input_shape=(468, 1), activation='relu'))
     # model.add(MaxPool1D(pool_size=2))
     model.add(Conv1D(filters=32, kernel_size=4, strides=2, padding='same', activation='relu'))
@@ -82,8 +93,8 @@ def train_model(x_train, y_train, x_ver, y_ver):
 
     history = model.fit(x_train, y_train,
 
-                        batch_size=16,  # 每批次放入模型中训练的数据
-                        epochs=500,  # 训练的轮数  一轮是
+                        batch_size=16,  
+                        epochs=500,  
                         validation_data=(x_ver, y_ver),
                         shuffle=True,
                         callbacks=[model_checkpoint])
