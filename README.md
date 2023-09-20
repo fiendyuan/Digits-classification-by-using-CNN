@@ -29,7 +29,13 @@ pip install -r requirements.txt
 3. **Feature Extraction**:
    - For 1D CNN: Refer to `get_mfcc_1dcnn.py`
    - For 2D CNN: Refer to `get_mfcc_2dcnn.py`
-![Architecture Diagram](https://github.com/fiendyuan/Digits-classification-by-using-CNN/blob/main/MFCC_extraction.png)
+
+ <br><br>
+
+
+   
+![Architecture Diagram](MFCC_extraction.png)
+<td width=27.5% align="center">Process of MFCC feature extraction
 
 ## License
 
