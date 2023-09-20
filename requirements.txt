@@ -1,0 +1,8 @@
+
+numpy
+wave
+keras
+scipy
+librosa
+pyaudio
+matplotlib

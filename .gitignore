@@ -5,7 +5,7 @@ new_recordings/*
 recordings/*
 tmp_wav/my.wav
 recordings_plus
-*.txt
+
 *.gif
 voice
 voices
