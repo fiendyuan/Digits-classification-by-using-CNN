@@ -29,7 +29,7 @@ def recording():
         wf.setsampwidth(p.get_sample_size(FORMAT))
         wf.setframerate(RATE)
         wf.writeframes(b''.join(frames))
-    print('录音结束')
+    print('Recorded.')
 
 
 
@@ -46,7 +46,7 @@ while True:
     result = model.predict(x_test)[0].tolist()
 
     j = result.index(max(result))
-    print('识别的结果为：' + str(j))
+    print('Result: ' + str(j))
 
 
 # recording()
