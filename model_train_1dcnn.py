@@ -1,7 +1,7 @@
 
 
 
-# 测试一维卷积神经网络的相关代码
+# Testing related code for one-dimensional convolutional neural networks
 
 from keras.utils import plot_model
 from keras import regularizers
@@ -14,12 +14,12 @@ from keras.utils import np_utils
 import matplotlib.pyplot as plt
 
 
-#数据准备阶段
+# Data preparation phase
 
 x_train =[]
 y_train = []
 
-# train1.txt 是自己录音的500条数据 quanbu.txt是老师提供的3000条录音加自己的500条录音进行训练
+# train1.txt contains 500 recordings made by oneself, while quanbu.txt contains 3000 recordings provided by the teacher plus the 500 recordings made by oneself for training.
 text = open('allmyvoice.txt','r',encoding='utf-8').read().split('\n')
 for i in text:
     wenjian,leibie = i.split('	')
@@ -37,40 +37,6 @@ print(y_train)
 
 model = Sequential()
 
-
-# 1.h5  使用3000条原本加500条自己录音  使用的是get_mfcc中的 get()函数获取特征
-# model.add(Conv1D(filters=16, kernel_size=5, strides=3,padding = 'same', input_shape = (1000, 1), activation = 'relu'))
-# model.add(MaxPool1D(pool_size=2))
-#
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-#
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-#
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-
-# 3.h5 使用500条自己录音  使用的是get_mfcc中的 get()函数获取特征
-# model.add(Conv1D(filters=16, kernel_size=5, strides=3,padding = 'same', input_shape = (1000, 1), activation = 'relu'))
-# model.add(MaxPool1D(pool_size=2))
-#
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-# #
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-#
-# model.add(Conv1D(filters=36,kernel_size=10,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-
-# 4.h5  使用的是500条自己的录音 使用的是get_mfcc中的 GetFrequencyFeature3（）函数获取特征
-# model.add(Conv1D(filters=16, kernel_size=5, strides=3,padding = 'same', input_shape = (22500, 1), activation = 'relu'))
-# model.add(MaxPool1D(pool_size=2))
-# model.add(Conv1D(filters=36,kernel_size=5,padding='same',activation='relu'))
-# model.add(MaxPool1D(pool_size=2))
-
-# 5.h5 使用3000条原本加500条自己录音 ，使用的是get_mfcc中的 GetFrequencyFeature3（）函数获取特征
 model.add(Conv1D(filters=16, kernel_size=5, strides=3,padding = 'same', input_shape = (1000, 1), activation = 'relu'))
 # model.add(MaxPool1D(pool_size=2))
 model.add(Conv1D(filters=32,kernel_size=5, strides=3, padding='same',activation='relu'))

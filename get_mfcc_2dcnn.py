@@ -41,7 +41,7 @@ print(b.shape)
 #     wave_data = wave_data.T
 #     return wave_data, framerate
 #
-# # 汉明窗
+# # Hamming window
 # x=np.linspace(0, 200 - 1, 200, dtype = np.int64)
 # w = 0.54 - 0.46 * np.cos(2 * np.pi * (x) / (200 - 1) )
 #
